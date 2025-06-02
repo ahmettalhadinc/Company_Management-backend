@@ -22,7 +22,7 @@ namespace Company_Management.Service.Hashing
             using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
             {
                 var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
-                //deneme
+
                 for(int i = 0; i < computeHash.Length; i++)
                 {
                     if (computeHash[i] != passwordHash[i])

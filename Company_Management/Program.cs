@@ -1,3 +1,6 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Company_Management.API.Modules;
 using Company_Management.Repository;
 using Company_Management.Service.Mappings;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +15,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapProfile));
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+containerBuilder.RegisterModule(new RepoServiceModule()));
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
