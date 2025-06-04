@@ -11,6 +11,7 @@ namespace Company_Management.Repository.Configurations
 {
     public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
     {
+
         public void Configure(EntityTypeBuilder<Department> builder)
         {
             builder.HasKey(x => x.Id);

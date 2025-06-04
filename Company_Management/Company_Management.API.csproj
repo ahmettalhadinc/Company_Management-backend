@@ -17,11 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Filters\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Company_Management.Repository\Company_Management.Repository.csproj" />
     <ProjectReference Include="..\Company_Management.Service\Company_Management.Service.csproj" />
   </ItemGroup>

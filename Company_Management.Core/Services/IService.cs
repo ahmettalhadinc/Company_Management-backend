@@ -18,5 +18,6 @@ namespace Company_Management.Core.Services
         void Update(T entity);
         void ChangeStatus(T entity);
         Task AddAsync(T entity);
+        Task<bool> AnyAsync(Expression<Func<T, bool>> expression);
     }
 }

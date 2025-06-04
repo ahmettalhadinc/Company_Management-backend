@@ -8,7 +8,7 @@ using Company_Management.Repository.UnitOfWorks;
 using Company_Management.Service.Mappings;
 using Company_Management.Service.Services;
 using System.Reflection;
-using Module=Autofac.Module
+using Module = Autofac.Module;
 
 namespace Company_Management.API.Modules
 {

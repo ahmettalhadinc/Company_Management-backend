@@ -1,5 +1,7 @@
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using Company_Management.API.Filters;
+using Company_Management.API.Middlewares;
 using Company_Management.API.Modules;
 using Company_Management.Repository;
 using Company_Management.Service.Mappings;
@@ -15,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(typeof(MapProfile));
+builder.Services.AddScoped(typeof(NotFoundFilter<>));
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
 containerBuilder.RegisterModule(new RepoServiceModule()));
@@ -36,9 +39,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
+app.UseCustomException();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
