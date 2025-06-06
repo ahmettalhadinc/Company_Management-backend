@@ -4,6 +4,7 @@ using Company_Management.Core.DTO;
 using Company_Management.Core.DTO.UpdateDTOs;
 using Company_Management.Core.Models;
 using Company_Management.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,7 @@ namespace Company_Management.API.Controllers
             _mapper = mapper;
         }
         [HttpGet]
+       
         public async Task<IActionResult> All()
         {
             var departments= _departmentService.GetAll();

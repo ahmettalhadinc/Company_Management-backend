@@ -24,6 +24,7 @@ namespace Company_Management.Repository.Repositories
 
         public async Task AddAsync(T entity)
         {
+            entity.Status = true;
             await _dbSet.AddAsync(entity);
         }
 

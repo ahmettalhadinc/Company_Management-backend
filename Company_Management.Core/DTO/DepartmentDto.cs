@@ -11,6 +11,6 @@ namespace Company_Management.Core.DTO
     {
         public string Name { get; set; }
 
-        public ICollection<Role> Roles { get; set; }
+        public ICollection<Role>? Roles { get; set; }
     }
 }

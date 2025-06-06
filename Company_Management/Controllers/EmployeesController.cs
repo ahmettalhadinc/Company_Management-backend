@@ -21,6 +21,7 @@ namespace Company_Management.API.Controllers
             _employeeService = employeeService;
             _mapper = mapper;
         }
+
         [HttpGet]
         public async Task<IActionResult> All()
         {

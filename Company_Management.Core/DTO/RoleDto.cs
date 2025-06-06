@@ -13,8 +13,8 @@ namespace Company_Management.Core.DTO
         public int DepartmentId { get; set; }
 
 
-        public DepartmentDto Department { get; set; }
-        public ICollection<Employee> Employees { get; set; }
-        public ICollection<User> Users { get; set; }
+        public DepartmentDto? Department { get; set; }
+        public ICollection<Employee>? Employees { get; set; }
+        public ICollection<User>? Users { get; set; }
     }
 }

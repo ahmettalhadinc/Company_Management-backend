@@ -15,6 +15,6 @@ namespace Company_Management.Core.DTO
 
         public bool IsWorking { get; set; }
 
-        public RoleDto Role { get; set; }
+        public RoleDto? Role { get; set; }
     }
 }
