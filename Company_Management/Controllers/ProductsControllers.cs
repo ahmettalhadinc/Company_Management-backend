@@ -56,7 +56,7 @@ namespace Company_Management.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Save(ProductDto productDto)
         {
-            int userId = 4;
+            int userId = GetUserFromToken();
             var processedEntity = _mapper.Map<Product>(productDto);
 
             processedEntity.UpdatedBy = userId;
@@ -66,6 +66,36 @@ namespace Company_Management.API.Controllers
             var product = await _productService.AddAsync(processedEntity);
             var productResponseDto = _mapper.Map<ProductDto>(product);
             return CreateActionResult(CustomResponseDto<ProductDto>.Success(201, productResponseDto));
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> IncreaseStock(ProductDto productDto)
+        {
+            int userId = 4;
+            var processedEntity = _mapper.Map<Product>(productDto);
+
+            processedEntity.UpdatedBy = userId;
+            processedEntity.CreatedBy = userId;
+
+
+             await _productService.IncreaseStock(processedEntity);
+            
+            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> DecreaseStock(ProductDto productDto)
+        {
+            int userId = GetUserFromToken();
+            var processedEntity = _mapper.Map<Product>(productDto);
+
+            processedEntity.UpdatedBy = userId;
+            processedEntity.CreatedBy = userId;
+
+
+            await _productService.DecreaseStock(processedEntity);
+        
+            return CreateActionResult(CustomResponseDto<NoContentDto>.Success(204));
         }
 
         [HttpPut]

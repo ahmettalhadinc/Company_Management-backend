@@ -9,5 +9,7 @@ namespace Company_Management.Core.Services
 {
     public interface IProductService:IService<Product>
     {
+        Task IncreaseStock(Product product);
+        Task DecreaseStock(Product product);
     }
 }

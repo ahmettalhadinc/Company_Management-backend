@@ -12,8 +12,30 @@ namespace Company_Management.Service.Services
 {
     public class ProductService : Service<Product>, IProductService
     {
-        public ProductService(IGenericRepository<Product> repository, IUnitOfWorks unitOfWorks) : base(repository, unitOfWorks)
+        private readonly IProductRepository _productRepository;
+        public ProductService(IGenericRepository<Product> repository, IUnitOfWorks unitOfWorks, IProductRepository productRepository) : base(repository, unitOfWorks)
         {
+            _productRepository = productRepository;
         }
+
+        public async Task IncreaseStock(Product product)
+        {
+           var currentProduct= await _productRepository.GetByIdAsync(product.Id);
+
+            currentProduct.Stock += product.Stock;
+            Update(currentProduct);
+
+        }
+
+        public async Task DecreaseStock(Product product)
+        {
+            var currentProduct = await _productRepository.GetByIdAsync(product.Id);
+
+            currentProduct.Stock -= product.Stock;
+            Update(currentProduct);
+
+        }
+
+
     }
 }
